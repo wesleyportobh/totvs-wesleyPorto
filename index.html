@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="pokedexApp">
+    <head>
+        <title>Teste Wesley</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-route.js"></script>
+      <script src="script.js"></script>
+      <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+
+<body ng-app='pokedexApp'>
+    <div ng-controller='pokedexCtrl'>
+      <div id='pokemon-list'>
+        <ul id='pokemons'>
+          <li ng-repeat='pokemon in pokemons.objects' class='pokemon'>
+            <a href="#" ng-click = "getInfo(pokemon.pkdx_id)">
+              <h3>{{pokemon.name}}</h3>
+              <img ng-src="http://pokeapi.co/media/img/{{pokemon.pkdx_id}}.png" width='100' alt="{{pokemon.name}}" />
+              <span ng-repeat='type in pokemon.types'>{{type.name}}</span>
+            </a>
+          </li>
+        </ul>
+        <button type="button" ng-click='loadMore(pokemons.meta.next)'>Outros Pokemons</button>
+      </div>
+
+      <div id='pokemon-details'>
+          <img src="" id='pokemonPic' width='200'/>
+          <h2>{{pokemonInfo.name}} #{{("0000" + pokemonInfo.pkdx_id).slice(-4)}}</h2>
+          <table border="1">
+            <tr>
+              <td>Type</td>
+              <td><span ng-repeat='type in pokemonInfo.types'>{{type.name}} </span></td>
+            </tr>
+            <tr>
+              <td>Attack</td> <td>{{pokemonInfo.types.ability.name}}</td>
+            </tr>
+            <tr>
+              <td>Defense</td> <td>{{pokemonInfo.types.base_experience}}</td>
+            </tr>
+            <tr>
+              <td>HP</td> <td>{{pokemonInfo.types.height}}</td>
+            </tr>objects.
+            <tr>
+              <td>SP Atack</td> <td>{{pokemonInfo.types.sp_atk}}</td>
+            </tr>
+            <tr>
+              <td>SP Deffense</td> <td>{{pokemonInfo.types.sp_def}}</td>
+            </tr>
+            <tr>
+              <td>Speed</td><td>{{type.speed}}</td>
+            </tr>
+            <tr>
+              <td>Weight</td><td>{{pokemonInfo.weight}}</td>
+            </tr>
+            <tr>
+              <td>Total movesS</td><td>{{pokemonInfo.moves.length}}</td>
+            </tr>
+          </table>
+      </div>
+    </div>
+  </body>
+</html>
